@@ -135,5 +135,16 @@ PYTHEN is licensed under the [MIT License](./LICENSE).
 
 ## Citing PYTHEN
 
-If you use PYTHEN in your research, please cite our work. (BibTeX entry to be provided upon publication).
+If you use PYTHEN in your research, please cite our work.
+
+```bibtex
+@inproceedings{nguyen2026pythen,
+  title     = {PYTHEN: A Flexible Framework for Legal Reasoning in Python},
+  author    = {Nguyen, Ha-Thanh and Satoh, Ken},
+  booktitle = {Local Proceedings of the 20th International Workshop on Juris-Informatics (JURISIN 2026)},
+  pages     = {17--30},
+  year      = {2026},
+  isbn      = {978-4-915905-98-8}
+}
+```
 
