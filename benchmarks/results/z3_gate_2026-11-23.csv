@@ -1,0 +1,15 @@
+case,leaves,k,max_changes,repeats,baseline_ms,z3_ms,speedup_baseline_over_z3,status,radius,baseline_evaluations,smt_script_bytes
+easy,8,0,,7,0.0228,2.0088,0.011,flipped,1,2,521
+easy,32,0,,7,0.0356,2.8035,0.013,flipped,1,2,1644
+easy,128,0,,5,0.0843,5.3688,0.016,flipped,1,2,6271
+hard,12,3,,5,0.2736,2.0552,0.133,flipped,3,80,933
+hard,22,4,,3,4.9161,2.2878,2.149,flipped,4,1795,1403
+hard,30,5,,1,103.1268,3.4835,29.604,flipped,5,31932,1779
+stable,10,0,,5,2.7466,1.5579,1.763,stable,,1024,683
+stable,14,0,,3,43.1086,2.0378,21.155,stable,,16384,871
+stable,17,0,,1,341.974,2.2932,149.127,stable,,131072,1012
+bounded,40,5,2,3,2.4974,2.4627,1.014,budget_exceeded,,821,2249
+bounded,80,6,3,1,222.736,3.8316,58.132,budget_exceeded,,85401,4129
+evaluate,8,,,60,0.00687,1.27692,0.0054,passed,,60,0
+evaluate,32,,,60,0.00338,1.55129,0.0022,passed,,60,0
+evaluate,128,,,20,0.00536,1.85129,0.0029,passed,,20,0

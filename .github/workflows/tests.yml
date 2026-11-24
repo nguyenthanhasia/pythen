@@ -1,0 +1,47 @@
+name: Python tests
+
+on:
+  push:
+    branches: [main, feature/pythen-v2]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    name: Python ${{ matrix.python-version }} core + legacy
+    # Ubuntu 26.04 does not provide Python 3.9 via actions/setup-python.
+    # Pin Ubuntu 24.04 for the 3.9/3.11/3.13 regression matrix.
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.9', '3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install package
+        run: python -m pip install -e .
+      - name: Run complete test suite (v1 and v2)
+        run: python -m unittest discover -s tests -v
+      - name: Run quickstart
+        run: python examples/quickstart_v2.py
+
+  z3py:
+    name: Z3 Python bindings integration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install package with optional Z3 bindings
+        run: python -m pip install -e '.[z3]'
+      - name: Check official Z3 bindings
+        run: python -c 'import z3; print(z3.get_version_string())'
+      - name: Run complete test suite
+        run: python -m unittest discover -s tests -v
