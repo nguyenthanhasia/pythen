@@ -1,0 +1,16 @@
+workload,method,status,radius,median_ms,min_ms,max_ms,runs,execution_mode,python_version,system,graph_sha256
+easy_radius_1,python,flipped,1,0.010746,0.009965,0.046319,5,python,3.13.5,Linux,c60d0491eaebb0d24687e4173c28fcb1b69d519833bc9f1492fb6fe8098bc3aa
+easy_radius_1,leap,flipped,1,0.021502,0.014161,0.046710,5,structural_leap,3.13.5,Linux,c60d0491eaebb0d24687e4173c28fcb1b69d519833bc9f1492fb6fe8098bc3aa
+easy_radius_1,z3,flipped,1,13.580965,4.949477,19.502523,5,z3,3.13.5,Linux,c60d0491eaebb0d24687e4173c28fcb1b69d519833bc9f1492fb6fe8098bc3aa
+read_once_radius_5,python,flipped,5,83.414865,75.704610,137.721072,5,python,3.13.5,Linux,41ddfd147bb3fc49e3ada3d1bbad9c0731b08bf78b11577cb895fe060dd31762
+read_once_radius_5,leap,flipped,5,0.084907,0.062784,0.459972,5,structural_leap,3.13.5,Linux,41ddfd147bb3fc49e3ada3d1bbad9c0731b08bf78b11577cb895fe060dd31762
+read_once_radius_5,z3,flipped,5,6.697433,6.113216,8.834775,5,z3,3.13.5,Linux,41ddfd147bb3fc49e3ada3d1bbad9c0731b08bf78b11577cb895fe060dd31762
+read_once_stable_16,python,stable,,147.194127,146.294265,148.585558,5,python,3.13.5,Linux,b01ac39b83e0ca719d18ea6a2d7b5e4f9de12070384ab8e5ad432f3adc8823be
+read_once_stable_16,leap,stable,,0.040561,0.026860,0.078018,5,structural_leap,3.13.5,Linux,b01ac39b83e0ca719d18ea6a2d7b5e4f9de12070384ab8e5ad432f3adc8823be
+read_once_stable_16,z3,stable,,4.447543,3.772128,5.753505,5,z3,3.13.5,Linux,b01ac39b83e0ca719d18ea6a2d7b5e4f9de12070384ab8e5ad432f3adc8823be
+shared_dependency,python,stable,,0.008593,0.007672,0.019389,5,python,3.13.5,Linux,14f81541d193d7fbaf49e5df4d54dcc33dba41b416db20de4429be8897d92139
+shared_dependency,leap,stable,,0.021482,0.018758,0.112509,5,fallback_python,3.13.5,Linux,14f81541d193d7fbaf49e5df4d54dcc33dba41b416db20de4429be8897d92139
+shared_dependency,z3,stable,,4.211769,3.886360,4.969777,5,z3,3.13.5,Linux,14f81541d193d7fbaf49e5df4d54dcc33dba41b416db20de4429be8897d92139
+read_once_128_bounded_2,python,budget_exceeded,,12.698691,12.624168,13.430250,5,python,3.13.5,Linux,cf065241ba002408adb3cdec358dca4164b021a152dcb387f65c3f52f38f7ee3
+read_once_128_bounded_2,leap,budget_exceeded,,0.197627,0.183465,0.311458,5,structural_leap,3.13.5,Linux,cf065241ba002408adb3cdec358dca4164b021a152dcb387f65c3f52f38f7ee3
+read_once_128_bounded_2,z3,budget_exceeded,,6.398774,5.938323,9.966055,5,z3,3.13.5,Linux,cf065241ba002408adb3cdec358dca4164b021a152dcb387f65c3f52f38f7ee3

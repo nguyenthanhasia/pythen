@@ -1,0 +1,30 @@
+[
+  {
+    "leaves": 128,
+    "radius": 8,
+    "z3_ms": 59.42,
+    "lower_bound_unsat_ms": 6.79,
+    "bytes": 6512
+  },
+  {
+    "leaves": 256,
+    "radius": 8,
+    "z3_ms": 14.38,
+    "lower_bound_unsat_ms": 3.68,
+    "bytes": 13040
+  },
+  {
+    "leaves": 512,
+    "radius": 8,
+    "z3_ms": 17.39,
+    "lower_bound_unsat_ms": 4.39,
+    "bytes": 26096
+  },
+  {
+    "leaves": 1024,
+    "radius": 8,
+    "z3_ms": 45.53,
+    "lower_bound_unsat_ms": 5.78,
+    "bytes": 52319
+  }
+]
