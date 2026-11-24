@@ -12,28 +12,44 @@ permissions:
 jobs:
   regression:
     name: Python ${{ matrix.python-version }} core + legacy
-    # Ubuntu 26.04 does not provide Python 3.9 via actions/setup-python.
-    # Pin Ubuntu 24.04 for the 3.9/3.11/3.13 regression matrix.
-    runs-on: ubuntu-24.04
+    # Python 3.7 is available via setup-python on Ubuntu 22.04, but not 24.04.
+    # Pin runner images instead of using ubuntu-latest, which may move forward.
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.9', '3.11', '3.13']
+        include:
+          - python-version: '3.7'
+            os: ubuntu-22.04
+          - python-version: '3.8'
+            os: ubuntu-22.04
+          - python-version: '3.9'
+            os: ubuntu-24.04
+          - python-version: '3.11'
+            os: ubuntu-24.04
+          - python-version: '3.13'
+            os: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Confirm interpreter version
+        run: |
+          python --version
+          python -c 'import sys; assert sys.version_info[:2] == tuple(map(int, "${{ matrix.python-version }}".split(".")))'
       - name: Install package
         run: python -m pip install -e .
       - name: Run complete test suite (v1 and v2)
         run: python -m unittest discover -s tests -v
-      - name: Run quickstart
-        run: python examples/quickstart_v2.py
+      - name: Run quickstarts (core and structural leap)
+        run: |
+          python examples/quickstart_v2.py
+          python examples/leap_v2.py
 
   z3py:
     name: Z3 Python bindings integration
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
