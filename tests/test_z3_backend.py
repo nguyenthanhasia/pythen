@@ -113,18 +113,16 @@ class Z3InterfaceTests(unittest.TestCase):
             Z3Experiment(None, engine='cplex')
 
     def test_unsupported_libz3_reports_clear_error(self):
-        # On hosts whose apt libz3 (4.8.x) cannot handle SMT-LIB optimization,
-        # the ctypes engine must raise an actionable message, not fail later
-        # with "unexpected Z3 output".
-        import ctypes.util
-        if _engine_available('ctypes'):
-            self.skipTest('this libz3 supports SMT-LIB optimization')
-        if ctypes.util.find_library('z3') is None:
-            self.skipTest('no libz3 present to probe')
-        r=Reasoner([rule('p','ALL',['a'])],['b'])
+        # Deterministic negative-capability test: independent of the machine's
+        # libz3 installation and without loading a native shared library.
+        from pythen.solvers.z3_native import NativeZ3
+        unsupported = NativeZ3.__new__(NativeZ3)
+        unsupported.version = (4, 8, 12)
+        unsupported.library = 'simulated-old-libz3'
+        unsupported.run = lambda script: 'unsupported'
         with self.assertRaises(RuntimeError) as cm:
-            Z3Experiment(r.graph, engine='ctypes')
-        message=str(cm.exception)
+            unsupported._probe_optimize()
+        message = str(cm.exception)
         self.assertIn('optimization', message)
         self.assertIn('pythen[z3]', message)
 

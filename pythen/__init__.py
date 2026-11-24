@@ -1,7 +1,15 @@
-"""PYTHEN legacy interface."""
+"""PYTHEN 2: extensible and verifiable defeasible reasoning.
+
+The original RuleTreeEvaluator and utility functions remain available.
+"""
 __version__ = "0.2.0a3"
+__author__ = "PYTHEN Contributors"
+__license__ = "MIT"
 from .evaluator import RuleTreeEvaluator
-from .utils import validate_rule, validate_rules, log_message, RuleValidationError
+from .utils import (
+    validate_rule, validate_rules, log_message, RuleValidationError,
+    load_rules_from_json, save_rules_to_json, print_rule, print_rules,
+)
 
 __all__ = [
     "RuleTreeEvaluator",
@@ -9,6 +17,10 @@ __all__ = [
     "validate_rules",
     "log_message",
     "RuleValidationError",
+    "load_rules_from_json",
+    "save_rules_to_json",
+    "print_rule",
+    "print_rules",
     "RuleGraph",
     "RuleNode",
     "EvidenceState",

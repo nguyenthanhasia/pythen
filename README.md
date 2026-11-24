@@ -254,7 +254,7 @@ See [Framework semantics](docs/framework_v2.md) for the precise query and verifi
 python -m unittest discover -s tests
 ```
 
-In the local Linux environment used to review this R3 snapshot, **73 tests ran, 72 passed, and 1 was skipped** (including 1,000 randomized Python/Leap and 60 three-way Python/Leap/Z3 differential cases). This checks the framework API and an available native Z3 path, but does not establish platform-wide compatibility with every Z3 build. The archive also contains separate benchmark records from prior z3py and ctypes runs; those records are not a substitute for reproducing the measurements in a target environment.
+The pre-merge compatibility audit on Linux / Python 3.13.5 executed the combined PYTHEN v1 + v2 suite: **115 tests passed, 0 failures, 0 skipped** on the locally reconstructed checkout with the compatibility fixes applied. This is a local result, not a GitHub Actions run; CI on the actual branch is the release gate. The test suite includes 1,000 seeded Python/Leap cases and 60 Python/Leap/Z3 comparisons. An available native libz3 was exercised here; official z3py and other platforms still require CI/integration validation. Performance records in this repository are workload-specific, not portable speed guarantees.
 
 To run a three-way comparison on the specified microbenchmarks, first install the package and then execute:
 

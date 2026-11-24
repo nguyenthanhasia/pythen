@@ -8,8 +8,7 @@ Z3 `z3_challenge` via compatible `ctypes` library. All methods use the same
 
 ## Correctness gate
 
-- Legacy and v2 tests: **73 discovered, 72 pass, 1 skip** (the skipped test
-  requires a deliberately incompatible Z3 build).
+- **Full staged pre-merge suite (24 November 2026): 115 tests passed, 0 failed, 0 skipped** on Python 3.13.5 with a compatible native libz3. This includes the original PYTHEN v1 tests retained by the repository, plus v2 and compatibility regressions. It was run on the assembled working tree; it is not yet a GitHub Actions result. The earlier standalone R3 ZIP had only 73 tests (72 pass, 1 skip); that number does **not** describe the uploaded Git branch.
 - Independent differential checks inside this suite: **600 seeded random
   DAGs**, **400 seeded read-once trees**, plus **60 seeded random
   Python/Leap/Z3 triple comparisons**.
