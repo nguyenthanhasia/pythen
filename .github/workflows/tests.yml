@@ -12,7 +12,9 @@ permissions:
 jobs:
   regression:
     name: Python ${{ matrix.python-version }} core + legacy
-    runs-on: ubuntu-latest
+    # Ubuntu 26.04 does not provide Python 3.9 via actions/setup-python.
+    # Pin Ubuntu 24.04 for the 3.9/3.11/3.13 regression matrix.
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
